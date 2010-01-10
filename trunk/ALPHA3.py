@@ -193,7 +193,7 @@ def Main():
     if _switches["input"] is not None:
       shellcode = io.ReadFile(_switches["input"]);
     else:
-      shellcode = io.ReadStdIn();
+      shellcode = sys.stdin.read();
   # Scan all encoders to see which match the given _settings/_arguments and take action:
   results = [];
   errors = False;
@@ -235,7 +235,7 @@ def Main():
           else:
             encoded_shellcode = encoder_function(_arguments["base address"], shellcode, *encoder_function_args);
             results += test.CheckEncodedShellcode(encoded_shellcode, encoder_settings);
-            io.WriteStdOut(encoded_shellcode);
+            sys.stdout.write(encoded_shellcode);
   if _flags["help"]:
     if not help_results:
       PrintWrappedLine("No encoder found that can encode using the given settings and arguments.");
