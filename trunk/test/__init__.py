@@ -83,7 +83,7 @@ def RunEncoderTest(encoder_settings, base_address, test_args, int3):
     encoder_function_args = encoder_settings["function args"];
   else:
     encoder_function_args = {};
-  encoded_shellcode = encoder_settings["function"](base_address, TEST_X86_SHELLCODE, *encoder_function_args)
+  encoded_shellcode = encoder_settings["function"](base_address, shellcode, *encoder_function_args)
   encoding_errors = CheckEncodedShellcode(encoded_shellcode, encoder_settings)
   if encoding_errors:
     ALPHA3.PrintVerboseStatusLine("Problem", "Encoder failed to encode correctly.")
@@ -107,7 +107,7 @@ def RunEncoderTest(encoder_settings, base_address, test_args, int3):
     if e.winerror == 193: # not a valid Win32 application
       ALPHA3.PrintVerboseStatusLine("Problem", "Encoder cannot be tested on your platform (ignored).")
       return None
-    raise e
+    raise
   stdout_data, stderr_data = popen.communicate(encoded_shellcode)
   if (stdout_data == TEST_SHELLCODE_OUTPUT and stderr_data == ""):
     ALPHA3.PrintVerboseStatusLine("Result", "Success")
