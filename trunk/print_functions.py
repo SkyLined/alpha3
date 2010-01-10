@@ -93,11 +93,11 @@ def PrintVerboseLine(message = ""):
   if g_output_verbosity_level:
     PrintLine(message)
 def PrintLine(message = ""):
-  global g_output_verbosity_level;
-  if g_output_verbosity_level == 0 or message == "":
-    PrintLine(message);
-  else:
-    PrintWrappedLine(message);
+  global g_output_verbosity_level, g_newline;
+#  if g_output_verbosity_level == 0 or message == "":
+  Print(message + g_newline);
+#  else:
+#    PrintWrappedLine(message);
 
 def PrintVerboseWrappedLine(message = ""):
   global g_output_verbosity_level;
@@ -154,9 +154,6 @@ def PrintWrappedLine(line="", header=""):
   if len(line) > 0:
     PrintLine(header + line);
 
-def PrintLine(line):
-  global g_newline;
-  Print(line + g_newline);
 def Print(string):
   sys.stdout.write(string);
 
