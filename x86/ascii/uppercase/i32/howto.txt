@@ -1,0 +1,15 @@
+56            PUSH    ESI
+54            PUSH    ESP
+58            POP     EAX
+3130          XOR     [EAX], ESI
+58            POP     EAX
+35 XXXXXXXX   XOR     EAX, XXXXXXXX    ; EAX
+50            PUSH    EAX
+35 XXXXXXXX   XOR     EAX, XXXXXXXX    ; ECX
+50            PUSH    EAX
+35 XXXXXXXX   XOR     EDX, XXXXXXXX    ; EDX
+5A            POP     EDX
+5A            POP     ECX
+315441 XX     XOR     [EAX*2+ECX+XX], EDX ; Fix LEA
+LEA:
+8D5441 XX     LEA     EDX, [EAX*2+ECX+XX] ; EDX = LEA
