@@ -1,0 +1,5 @@
+ALPHA3 can be build automatically using the SkyBuild project:
+http://code.google.com/p/skybuild/
+
+Just run build.py in the main project folder; the build_config.py files will
+tell SkyBuild exactly what to build in what order.
