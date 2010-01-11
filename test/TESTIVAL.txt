@@ -1,0 +1,9 @@
+This folder contains binaries build from source of the Testival project.
+See http://code.google.com/p/testival/ for more details and to get the latest version of the source.
+The following files are needed to test the alphanumeric shellcodes generated with ALPHA3:
+w32-testival.exe
+w32-testival.pdb
+w32-writeconsole-shellcode.bin
+w64-testival.exe
+w64-testival.pdb
+w64-writeconsole-shellcode.bin
