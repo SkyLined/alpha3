@@ -5,37 +5,49 @@
 valid_character_encodings = ["ascii", "cp437", "latin-1", "utf-16"];
 valid_character_casings   = ["lowercase", "mixedcase", "uppercase"];
 
-numeric                   = "0123456789";
-uppercase_ascii           = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-lowercase_ascii           = "abcdefghijklmnopqrstuvwxyz";
-mixedcase_ascii           = uppercase_ascii + lowercase_ascii;
-uppercase_cp437           = "€’š¥âãäèêíî";
-lowercase_cp437           = "‚ƒ„…†‡ˆ‰Š‹Œ‘“”•–—˜Ÿ ¡¢£¤àáåæçéë";
-mixedcase_cp437           = uppercase_cp437 + lowercase_cp437;
-uppercase_latin_1         = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİŞ";
-lowercase_latin_1         = "ßàáâãäåæçèéêëìíîïğñòóôõöøùúûüışÿ";
-mixedcase_latin_1         = uppercase_latin_1 + lowercase_latin_1;
+numbers                 = "0123456789";
+symbols                 = " !\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~";
+symbols_cp437           = "›œ¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßìïğñòóôõö÷øùúûüışÿ";
+symbols_latin_1         = " ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿×÷";
+uppercase_alpha         = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+uppercase_alpha_cp437   = "€’š¥âãäèêíî";
+uppercase_alpha_latin_1 = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİŞ";
+lowercase_alpha         = "abcdefghijklmnopqrstuvwxyz";
+lowercase_alpha_cp437   = "‚ƒ„…†‡ˆ‰Š‹Œ‘“”•–—˜Ÿ ¡¢£¤àáåæçéë";
+lowercase_alpha_latin_1 = "ßàáâãäåæçèéêëìíîïğñòóôõöøùúûüışÿ";
+uppercase               = numbers + uppercase_alpha;
+uppercase_cp437         = uppercase + uppercase_alpha_cp437;
+uppercase_latin_1       = uppercase + uppercase_alpha_latin_1;
+lowercase               = numbers + lowercase_alpha;
+lowercase_cp437         = lowercase + lowercase_alpha_cp437;
+lowercase_latin_1       = lowercase + lowercase_alpha_latin_1;
+mixedcase               = numbers + uppercase_alpha + lowercase_alpha;
+mixedcase_cp437         = mixedcase + uppercase_alpha_cp437 + lowercase_alpha_cp437;
+mixedcase_latin_1       = mixedcase + uppercase_alpha_latin_1 + lowercase_alpha_latin_1;
+printable               = mixedcase + symbols;
+printable_cp437         = mixedcase_cp437 + symbols + symbols_cp437;
+printable_latin_1       = mixedcase_latin_1 + symbols + symbols_latin_1;
 
 valid_chars = {
   "ascii": {
-    "lowercase": numeric + lowercase_ascii,
-    "mixedcase": numeric + mixedcase_ascii,
-    "uppercase": numeric + uppercase_ascii
+    "lowercase": lowercase,
+    "mixedcase": mixedcase,
+    "uppercase": uppercase,
   },
   "cp437": {
-    "lowercase": numeric + lowercase_ascii + lowercase_cp437,
-    "mixedcase": numeric + mixedcase_ascii + mixedcase_cp437,
-    "uppercase": numeric + uppercase_ascii + uppercase_cp437
+    "lowercase": lowercase_cp437,
+    "mixedcase": mixedcase_cp437,
+    "uppercase": uppercase_cp437,
   },
   "latin-1": {
-    "lowercase": numeric + lowercase_ascii + lowercase_latin_1,
-    "mixedcase": numeric + mixedcase_ascii + mixedcase_latin_1,
-    "uppercase": numeric + uppercase_ascii + uppercase_latin_1
+    "lowercase": lowercase_latin_1,
+    "mixedcase": mixedcase_latin_1,
+    "uppercase": uppercase_latin_1,
   },
   "utf-16": {
-    "lowercase": numeric + lowercase_ascii + lowercase_latin_1,
-    "mixedcase": numeric + mixedcase_ascii + mixedcase_latin_1,
-    "uppercase": numeric + uppercase_ascii + uppercase_latin_1
+    "lowercase": lowercase,
+    "mixedcase": mixedcase,
+    "uppercase": uppercase,
   },
 }
 
